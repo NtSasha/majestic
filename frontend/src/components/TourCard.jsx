@@ -22,9 +22,9 @@ export default function TourCard({ tour }) {
           </div>
           
           <div 
-            className="flex items-center justify-center w-8 h-8 rounded-full bg-white text-black shrink-0 shadow-sm transition-all hover:bg-majestic-gold hover:text-white group-hover:scale-110"
+            className="flex items-center justify-center w-6 h-6 rounded-full bg-white text-black shrink-0 shadow-sm transition-all hover:bg-majestic-gold hover:text-white group-hover:scale-110"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="-rotate-45">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="-rotate-45">
               <path d="m9 18 6-6-6-6" />
             </svg>
           </div>
