@@ -2,9 +2,9 @@ import Link from 'next/link';
 
 export default function BlogCard({ id, image, date, title, description }) {
   return (
-    <div className="border border-gray-200 rounded-2xl p-4 flex flex-col bg-white">
+    <div className="border border-gray-200 rounded-2xl p-3 flex flex-col bg-white">
       {/* Image Container with Badge */}
-      <div className="relative rounded-xl overflow-hidden mb-6 h-64">
+      <div className="relative rounded-xl overflow-hidden mb-4 h-48">
         <img
           src={image || "/images/image4.png"}
           alt={title}
@@ -21,17 +21,17 @@ export default function BlogCard({ id, image, date, title, description }) {
 
       {/* Content */}
       <div className="flex flex-col flex-grow">
-        <h3 className="text-xl font-bold text-black mb-3 leading-snug">
+        <h3 className="text-lg font-bold text-black mb-2 leading-tight">
           {title}
         </h3>
-        <p className="text-gray-600 text-sm mb-8 line-clamp-3 leading-relaxed flex-grow">
+        <p className="text-gray-600 text-[13px] mb-4 line-clamp-3 leading-relaxed flex-grow">
           {description}
         </p>
 
         {/* Read More Button */}
         <Link 
           href={`/blog/${id}`}
-          className="w-full text-center py-3 border border-gray-300 rounded-full font-semibold text-gray-800 hover:bg-black hover:text-white hover:border-black transition-colors"
+          className="w-full text-center py-2 text-[13px] border border-gray-300 rounded-full font-semibold text-gray-800 hover:bg-black hover:text-white hover:border-black transition-colors"
         >
           Read more
         </Link>
