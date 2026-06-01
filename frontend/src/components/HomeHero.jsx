@@ -48,9 +48,11 @@ export default function HomeHero({
 
       {/* Hero Content */}
       <div className="relative z-30 flex flex-col items-center text-center px-4 max-w-4xl mx-auto mt-16">
-        <p className="text-xs md:text-sm font-medium mb-4 tracking-wide">
-          {subtitle}
-        </p>
+        {subtitle && (
+          <p className="text-xs md:text-sm font-medium mb-4 tracking-wide">
+            {subtitle}
+          </p>
+        )}
         <h1 className="text-2xl md:text-4xl font-bold leading-tight mb-8">
           {title}
         </h1>
