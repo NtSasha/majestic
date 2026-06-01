@@ -315,7 +315,7 @@ export default function TourDetailsPage({ params }) {
           <div className="flex flex-col w-full mb-8">
             <h2 className="text-xl md:text-2xl font-bold text-center mb-6">Explore more destinations</h2>
             <div className="flex justify-end w-full">
-              <button className="hidden md:flex items-center gap-2 px-5 py-2 border border-[#3e3205] text-[#3e3205] rounded-full text-[15px] font-semibold hover:bg-[#3e3205] hover:text-white transition-colors">
+              <button className="hidden md:flex items-center gap-2 px-5 py-2 border border-majestic-gold text-majestic-gold rounded-full text-[15px] font-semibold hover:bg-majestic-gold hover:text-white transition-colors">
                 Browse destinations
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </button>

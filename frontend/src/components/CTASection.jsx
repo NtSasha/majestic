@@ -19,11 +19,11 @@ export default function CTASection() {
           <div className="flex items-center gap-4">
             <Link
               href="/book"
-              className="bg-[#3e3205] text-white text-sm font-bold py-3 px-8 rounded-full hover:bg-black transition-colors shadow-md"
+              className="bg-majestic-gold text-white text-sm font-bold py-3 px-8 rounded-full hover:bg-black transition-colors shadow-md"
             >
               Book your trip
             </Link>
-            <div className="w-8 h-8 rounded-full bg-[#3e3205] flex items-center justify-center text-white cursor-pointer hover:bg-black transition-colors shadow-md">
+            <div className="w-8 h-8 rounded-full bg-majestic-gold flex items-center justify-center text-white cursor-pointer hover:bg-black transition-colors shadow-md">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M7 17l9.2-9.2M17 17V7H7"/>
               </svg>
