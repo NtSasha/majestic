@@ -109,7 +109,7 @@ export default function ToursPage() {
         </div>
 
         <div className="relative z-30 flex flex-col items-center text-center px-4 max-w-4xl mx-auto mt-32">
-          <h1 className="text-2xl md:text-4xl font-bold leading-relaxed mb-8">
+          <h1 className="text-xl md:text-3xl font-bold leading-relaxed mb-8">
             Experience the Best of Rwanda through <br className="hidden md:block" /> Unforgettable Journeys
           </h1>
         </div>
@@ -130,7 +130,7 @@ export default function ToursPage() {
               onClick={() => setActiveCategory(category)}
               className={`px-6 py-2 rounded-full border text-sm font-medium transition-colors ${
                 activeCategory === category 
-                  ? "bg-[#3e3205] border-[#3e3205] text-white" 
+                  ? "bg-majestic-gold border-majestic-gold text-white" 
                   : "bg-white border-gray-300 text-black hover:border-black"
               }`}
             >

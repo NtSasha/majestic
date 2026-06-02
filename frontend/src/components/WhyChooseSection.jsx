@@ -7,7 +7,7 @@ export default function WhyChooseSection() {
     {
       id: 1,
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#4d3b0e]">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[majestic-gold]">
           <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.6l-1 2.5L8 13l-4 4-2.5-.5L1 18l4.5 3 3 4.5 1.5-.5-.5-2.5 4-4 3.7 5.3c.4.2.8-.2.7-.7Z" />
         </svg>
       ),
@@ -17,7 +17,7 @@ export default function WhyChooseSection() {
     {
       id: 2,
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#4d3b0e]">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[majestic-gold]">
           <circle cx="12" cy="12" r="10" />
           <polygon points="10 8 16 12 10 16 10 8" />
         </svg>
@@ -28,7 +28,7 @@ export default function WhyChooseSection() {
     {
       id: 3,
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#4d3b0e]">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[majestic-gold]">
           <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
           <line x1="16" x2="16" y1="2" y2="6" />
           <line x1="8" x2="8" y1="2" y2="6" />
@@ -75,7 +75,7 @@ export default function WhyChooseSection() {
                 <div className="mb-3">
                   {feature.icon}
                 </div>
-                <h3 className="text-base font-bold text-[#4d3b0e] mb-2">
+                <h3 className="text-base font-bold text-[majestic-gold] mb-2">
                   {feature.title}
                 </h3>
                 <p className="text-gray-800 text-xs leading-relaxed max-w-lg">

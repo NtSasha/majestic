@@ -80,9 +80,9 @@ export default function AboutPage() {
 
         {/* Separator Line */}
         <div className="w-[90%] mx-auto flex items-center justify-center mt-20">
-          <div className="h-[1px] bg-[#4d3b0e]/30 flex-grow"></div>
-          <div className="w-2.5 h-2.5 rotate-45 bg-[#4d3b0e] mx-4"></div>
-          <div className="h-[1px] bg-[#4d3b0e]/30 flex-grow"></div>
+          <div className="h-[1px] bg-[majestic-gold]/30 flex-grow"></div>
+          <div className="w-2.5 h-2.5 rotate-45 bg-[majestic-gold] mx-4"></div>
+          <div className="h-[1px] bg-[majestic-gold]/30 flex-grow"></div>
         </div>
       </section>
 
