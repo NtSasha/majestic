@@ -25,7 +25,7 @@ export default function Home() {
         </p>
         <div className="flex flex-col sm:flex-row items-center gap-6">
           <Link
-            href="/destination"
+            href="/book"
             className="flex items-center justify-center gap-6 w-48 bg-white border border-gray-200 text-majestic-gold px-6 py-2.5 rounded-full font-bold text-sm hover:bg-gray-50 transition-colors shadow-sm"
           >
             Book a tour

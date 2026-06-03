@@ -16,11 +16,6 @@ export default function Navbar({ theme = "dark" }) {
     // or starts with the path for other routes like /tours
     let isActive = path === "/" ? pathname === "/" : pathname.startsWith(path);
     
-    // Highlight "Contact" when on the booking page
-    if (pathname.startsWith("/book") && path === "/contact") {
-      isActive = true;
-    }
-    
     if (isActive) {
       return `text-yellow-500 relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-[2px] after:bg-yellow-500`;
     }
@@ -72,7 +67,7 @@ export default function Navbar({ theme = "dark" }) {
 
       {/* Book a Tour Button */}
       <Link
-        href="/contact"
+        href="/book"
         className={`hidden md:inline-flex items-center justify-center px-6 py-2.5 border ${borderColor} ${textColor} rounded-md text-sm font-bold ${hoverBg} transition-colors`}
       >
         Book a tour

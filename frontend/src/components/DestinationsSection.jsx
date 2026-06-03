@@ -16,7 +16,7 @@ export default function DestinationsSection() {
       <div className="flex flex-col lg:flex-row gap-12 lg:gap-10 items-center">
         {/* Left Content */}
         <div className="w-full lg:w-[55%] flex flex-col pt-4 lg:pr-10 lg:pl-16">
-          <h2 className="text-xl md:text-2xl font-bold text-black mb-2 leading-tight">
+          <h2 className="text-xl md:text-2xl font-bold text-black mb-6 leading-tight">
             Explore top exotic destinations in <br className="hidden lg:block" />
             Rwanda to elevate your experience
           </h2>

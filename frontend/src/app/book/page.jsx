@@ -36,6 +36,7 @@ const tours = [
 
 export default function BookDestinationPage() {
   const [step, setStep] = useState(1);
+  const [isConfirmed, setIsConfirmed] = useState(false);
   const [selectedTourId, setSelectedTourId] = useState(null);
   
   // Step 2 & 3 State
@@ -49,6 +50,9 @@ export default function BookDestinationPage() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [specialRequest, setSpecialRequest] = useState("");
+
+  // Step 5 State
+  const [paymentMethod, setPaymentMethod] = useState("card");
 
   const selectedTour = tours.find(t => t.id === selectedTourId);
   const basePricePerPerson = 22000;
@@ -87,10 +91,11 @@ export default function BookDestinationPage() {
           <div className="absolute top-1/2 -left-8 md:-left-16 -right-8 md:-right-16 h-[1px] bg-[#d4d4d4] -z-10 transform -translate-y-1/2"></div>
           {/* Active Brown Line Segment */}
           <div className={`absolute top-1/2 -left-8 md:-left-16 h-[1px] bg-majestic-gold -z-10 transform -translate-y-1/2 transition-all duration-500 ${
-            step >= 4 ? 'w-[calc(100%+2rem)] md:w-[calc(100%+4rem)]' : 
-            step >= 3 ? 'w-[calc(75%+2rem)] md:w-[calc(75%+4rem)]' : 
-            step >= 2 ? 'w-[calc(50%+2rem)] md:w-[calc(50%+4rem)]' : 
-            'w-[calc(25%+2rem)] md:w-[calc(25%+4rem)]'
+            step >= 5 ? 'w-[calc(100%+2rem)] md:w-[calc(100%+4rem)]' : 
+            step >= 4 ? 'w-[calc(75%+2rem)] md:w-[calc(75%+4rem)]' : 
+            step >= 3 ? 'w-[calc(50%+2rem)] md:w-[calc(50%+4rem)]' : 
+            step >= 2 ? 'w-[calc(25%+2rem)] md:w-[calc(25%+4rem)]' : 
+            'w-0'
           }`}></div>
           
           <div className="flex justify-between items-center z-10">
@@ -119,15 +124,17 @@ export default function BookDestinationPage() {
               </svg>
             </div>
             {/* Step 5: Payment */}
-            <div className="w-12 h-12 rounded-full bg-[#efefef] flex items-center justify-center">
-              <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-300 ${step >= 5 ? 'bg-majestic-gold shadow-md text-white' : 'bg-[#efefef] text-black'}`}>
+              <svg className={`w-5 h-5 ${step >= 5 ? 'text-white' : 'text-black'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
               </svg>
             </div>
           </div>
         </div>
 
-        {step === 1 && (
+        {!isConfirmed ? (
+          <>
+            {step === 1 && (
           <>
             {/* Select a tour section */}
             <div className="mb-12">
@@ -201,7 +208,7 @@ export default function BookDestinationPage() {
           </>
         )}
 
-        {(step >= 2 && step <= 4) && (
+        {(step >= 2 && step <= 5) && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 max-w-5xl mx-auto">
             
             {/* Left Column */}
@@ -261,7 +268,7 @@ export default function BookDestinationPage() {
                 </>
               ) : step === 3 ? (
                 <>
-                  <h3 className="text-xl font-bold text-black mb-6">Traveler's Information</h3>
+                  <h3 className="text-xl font-bold text-black mb-6">Traveler&apos;s Information</h3>
                   
                   <div className="bg-white rounded-[2rem] border border-gray-100 p-8 shadow-[0_20px_50px_rgba(0,0,0,0.05)]">
                     
@@ -326,7 +333,7 @@ export default function BookDestinationPage() {
 
                   </div>
                 </>
-              ) : (
+              ) : step === 4 ? (
                 <>
                   <h3 className="text-xl font-bold text-black mb-6">Contact Information</h3>
                   
@@ -410,6 +417,78 @@ export default function BookDestinationPage() {
 
                   </div>
                 </>
+              ) : (
+                <>
+                  <h3 className="text-xl font-bold text-black mb-6">Payment Method</h3>
+                  
+                  <div className="space-y-4">
+                    {/* Payment Options */}
+                    <button 
+                      onClick={() => setPaymentMethod('card')}
+                      className={`w-full flex items-center gap-4 p-5 rounded-xl border text-left transition-colors duration-300 ${paymentMethod === 'card' ? 'border-black bg-white shadow-sm' : 'border-gray-200 bg-white hover:border-gray-300'}`}
+                    >
+                      <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                      </svg>
+                      <div>
+                        <div className="font-bold text-black text-sm mb-1">Credit / Debit Card</div>
+                        <div className="text-xs text-gray-500 font-medium">Visa, MasterCard, Amex</div>
+                      </div>
+                    </button>
+
+                    <button 
+                      onClick={() => setPaymentMethod('mobile')}
+                      className={`w-full flex items-center gap-4 p-5 rounded-xl border text-left transition-colors duration-300 ${paymentMethod === 'mobile' ? 'border-black bg-white shadow-sm' : 'border-gray-200 bg-white hover:border-gray-300'}`}
+                    >
+                      <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                      <div>
+                        <div className="font-bold text-black text-sm mb-1">Mobile Money</div>
+                        <div className="text-xs text-gray-500 font-medium">MTN, Airtel (RWF)</div>
+                      </div>
+                    </button>
+
+                    <div className="pt-8 mt-8 border-t border-gray-100 flex flex-col gap-6">
+                      {/* Secure Payment Box */}
+                      <div className="bg-amber-600/10 border border-amber-600 text-amber-600 rounded-xl p-3 md:p-4 flex gap-3">
+                        <svg className="w-5 h-5 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                        <div>
+                          <div className="font-bold text-sm mb-0.5">Secure Payment</div>
+                          <div className="text-[11px] opacity-90 leading-snug">Your payment information is secure. You won&apos;t be charged until we confirm</div>
+                        </div>
+                      </div>
+
+                      {/* Buttons */}
+                      <div className="flex gap-4">
+                        <button 
+                          onClick={() => setStep(4)} 
+                          className="w-32 py-2 border border-black text-black rounded-full text-xs font-bold hover:bg-gray-50 transition-colors duration-300 flex items-center justify-center gap-2"
+                        >
+                          Back
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 12H5M12 19l-7-7 7-7" />
+                          </svg>
+                        </button>
+                        <button 
+                          onClick={() => {
+                            setIsConfirmed(true);
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                          }}
+                          className="w-32 py-2 border border-black text-black rounded-full text-xs font-bold hover:bg-gray-50 transition-colors duration-300 flex items-center justify-center gap-2"
+                        >
+                          confirm
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14M12 5l7 7-7 7" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+
+                  </div>
+                </>
               )}
             </div>
 
@@ -453,11 +532,52 @@ export default function BookDestinationPage() {
               </div>
             </div>
           </div>
+            )}
+          </>
+        ) : (
+          <div className="flex flex-col items-center max-w-2xl mx-auto text-center mt-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">Booking Confirmed</h2>
+            <p className="text-gray-700 mb-10 max-w-[450px] leading-relaxed text-[13px]">
+              Thank you for booking with Majestic. We&apos;ve sent a confirmation email to bonnieumurerwa@gmail.com. Our team will contact you within 24 hours to finalize the details.
+            </p>
+            
+            {/* Booking Summary Card */}
+            <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm w-full max-w-md text-left mb-10">
+              <div className="bg-[#4d3b0e] py-4 px-6">
+                <h3 className="text-white font-bold text-sm">Booking Summary</h3>
+              </div>
+              <div className="p-6 pb-8">
+                <div className="flex justify-between items-center py-4 border-b border-gray-100">
+                  <span className="text-gray-500 text-xs">Tour</span>
+                  <span className="font-semibold text-black text-xs">{tours.find(t => t.id === selectedTourId)?.name || 'Akagera National Park'}</span>
+                </div>
+                <div className="flex justify-between items-center py-4 border-b border-gray-100">
+                  <span className="text-gray-500 text-xs">Date</span>
+                  <span className="font-semibold text-black text-xs">{selectedDate || '17 -12 -2025'}</span>
+                </div>
+                <div className="flex justify-between items-center py-4 border-b border-gray-100">
+                  <span className="text-gray-500 text-xs">Travelers</span>
+                  <span className="font-semibold text-black text-xs">{totalPeople || 1} {totalPeople === 1 ? 'Adult' : 'People'}</span>
+                </div>
+                <div className="flex justify-between items-center pt-8 pb-2">
+                  <span className="text-black font-bold text-sm">Total</span>
+                  <span className="text-black font-bold text-sm">${totalPrice || 22000}</span>
+                </div>
+              </div>
+            </div>
+          </div>
         )}
 
       </div>
 
-      <CTASection />
+      {/* Fanned Images before Footer */}
+      <div className="w-full relative h-[250px] flex items-center justify-center -mb-24 z-20 overflow-visible hidden md:flex">
+        <img src="/images/rectangle-51.png" alt="Destination" className="w-[200px] h-[200px] object-cover rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.3)] absolute transform -rotate-[16deg] -translate-x-[240px] translate-y-8" />
+        <img src="/images/image2.png" alt="Destination" className="w-[220px] h-[220px] object-cover rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.3)] absolute transform -rotate-[8deg] -translate-x-[120px] translate-y-4 z-10" />
+        <img src="/images/image1.png" alt="Destination" className="w-[240px] h-[240px] object-cover rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.4)] absolute transform rotate-0 z-20" />
+        <img src="/images/rectangle-53.png" alt="Destination" className="w-[220px] h-[220px] object-cover rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.3)] absolute transform rotate-[8deg] translate-x-[120px] translate-y-4 z-10" />
+        <img src="/images/rectangle-49.png" alt="Destination" className="w-[200px] h-[200px] object-cover rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.3)] absolute transform rotate-[16deg] translate-x-[240px] translate-y-8" />
+      </div>
       <Footer />
     </main>
   );

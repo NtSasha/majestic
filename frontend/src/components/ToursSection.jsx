@@ -65,7 +65,7 @@ export default function ToursSection() {
 
             {/* Featured Tag */}
             <div className="absolute top-4 left-4">
-              <span className="bg-[majestic-gold] text-white text-xs font-bold px-4 py-1.5 rounded-full">
+              <span className="bg-majestic-gold text-white text-xs font-bold px-4 py-1.5 rounded-full">
                 Featured
               </span>
             </div>

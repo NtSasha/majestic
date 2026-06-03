@@ -50,7 +50,7 @@ export default function TestimonialsSection() {
     <section className="pt-8 pb-24 overflow-hidden w-full bg-white relative">
       <div className="max-w-4xl mx-auto px-4 text-center mb-24">
         <h2 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight">
-          <span className="text-[majestic-gold]">900+</span> <span className="text-black">Share Experiences</span>
+          <span className="text-majestic-gold">900+</span> <span className="text-black">Share Experiences</span>
         </h2>
         <p className="text-gray-600 text-xs md:text-sm max-w-2xl mx-auto leading-relaxed">
           Join 9600 travelers sharing experiences! Discover exclusive travel packages for every adventure seeker. Our deals help you find the perfect getaway
@@ -72,7 +72,7 @@ export default function TestimonialsSection() {
               className={`
                 w-[260px] md:w-[300px] shrink-0 mx-3 border border-gray-200 rounded-xl p-5 bg-white cursor-pointer
                 transition-all duration-300 ease-in-out
-                ${clickedCardId === testimonial.id ? 'scale-105 shadow-xl border-[majestic-gold] z-10 relative' : 'shadow-sm hover:shadow-md'}
+                ${clickedCardId === testimonial.id ? 'scale-105 shadow-xl border-majestic-gold z-10 relative' : 'shadow-sm hover:shadow-md'}
               `}
             >
               <div className="flex gap-1 mb-3">
