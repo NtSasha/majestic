@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function WhyChooseSection() {
   const features = [
@@ -62,15 +63,24 @@ export default function WhyChooseSection() {
 
         {/* Right Side: Features */}
         <div className="w-full lg:w-[50%] flex flex-col max-w-xl lg:ml-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-black mt-8 mb-8 tracking-tight text-center">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-2xl md:text-3xl font-bold text-black mt-8 mb-8 tracking-tight text-center"
+          >
             Why Choose Majestic
-          </h2>
+          </motion.h2>
 
           <div className="flex flex-col gap-4">
-            {features.map((feature) => (
-              <div
+            {features.map((feature, index) => (
+              <motion.div
                 key={feature.id}
-                className="p-5 border border-gray-200 rounded-lg flex flex-col shadow-sm"
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
+                className="p-5 border border-gray-200 rounded-lg flex flex-col shadow-sm hover:shadow-md hover:border-majestic-gold/50 transition-all duration-300"
               >
                 <div className="mb-3">
                   {feature.icon}
@@ -81,7 +91,7 @@ export default function WhyChooseSection() {
                 <p className="text-gray-800 text-xs leading-relaxed max-w-lg">
                   {feature.description}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

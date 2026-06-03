@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function AboutPage() {
   return (
@@ -19,16 +20,26 @@ export default function AboutPage() {
 
       {/* 2. Welcome & Mission Section */}
       <section className="pt-20 pb-12 md:pt-32 md:pb-16 px-4">
-        <div className="max-w-4xl mx-auto text-center mb-20">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-4xl mx-auto text-center mb-20"
+        >
           <h2 className="text-2xl md:text-3xl font-bold mb-4 text-black">Welcome to Majestic</h2>
           <p className="text-gray-600 leading-relaxed text-sm max-w-2xl mx-auto">
-            We're passionate about travel and committed to creating unforgettable experiences for our clients. With years of industry experience, we've perfected the art of curating perse.
+            We&apos;re passionate about travel and committed to creating unforgettable experiences for our clients. With years of industry experience, we&apos;ve perfected the art of curating perse.
           </p>
-        </div>
+        </motion.div>
 
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-12">
           {/* Left Collage */}
-          <div 
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
             className="w-full lg:w-1/2 flex gap-2 h-[300px] md:h-[400px] lg:pl-10 lg:mt-10" 
             style={{ containerType: 'size' }}
           >
@@ -59,7 +70,7 @@ export default function AboutPage() {
                 style={{ width: '100cqw', height: '100cqh', left: 'calc(-45cqw - 1rem)' }}
               />
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Text */}
           <div className="w-full lg:w-1/2 flex flex-col gap-14">
@@ -91,17 +102,29 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-12">
 
           {/* Left Title */}
-          <div className="w-full lg:w-5/12 lg:pl-10">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="w-full lg:w-5/12 lg:pl-10"
+          >
             <h2 className="text-xl md:text-2xl lg:text-3xl font-bold leading-tight mb-8 text-black">
               Have a look at our<br />unique selling<br />proportions
             </h2>
             <Link href="#" className="inline-flex items-center justify-center ml-10 px-10 py-2 border border-black/50 rounded-full font-extrabold text-base hover:border-black hover:bg-black hover:text-white transition-colors w-max text-black">
               Read More
             </Link>
-          </div>
+          </motion.div>
 
           {/* Right Content */}
-          <div className="w-full lg:w-7/12 flex flex-col justify-center">
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="w-full lg:w-7/12 flex flex-col justify-center"
+          >
             <p className="text-gray-600 text-xs md:text-sm leading-relaxed mb-12">
               We take pride in offering high-quality, locally sourced Rwandan products. Every item is crafted with care, supporting our artisans and preserving cultural heritage. From the heart of Rwanda to your hands, we ensure excellence in every step.
             </p>
@@ -120,7 +143,7 @@ export default function AboutPage() {
                 <p className="text-black text-xs font-semibold">Unique Tours</p>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -129,7 +152,13 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
 
           {/* Left List */}
-          <div className="w-full lg:w-5/12 lg:pl-10">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="w-full lg:w-5/12 lg:pl-10"
+          >
             <h2 className="text-xl md:text-2xl lg:text-3xl font-bold leading-tight mb-8 text-black">
               Everything You Need, Thoughtfully Arranged
             </h2>
@@ -144,27 +173,39 @@ export default function AboutPage() {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Image */}
-          <div className="w-full lg:w-7/12 flex justify-end lg:pl-16 lg:pr-8">
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="w-full lg:w-7/12 flex justify-end lg:pl-16 lg:pr-8"
+          >
             <img
               src="/images/gorilla2.png"
               alt="Services Gorilla"
               className="w-full max-w-[75%] h-[300px] md:h-[400px] object-cover rounded-[15px] brightness-75"
             />
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* 5. FAQs */}
       <section className="pt-6 pb-4">
-        <div className="text-center px-4">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center px-4"
+        >
           <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">Everything You To Know</h2>
           <p className="text-gray-600 max-w-3xl mx-auto text-xs md:text-sm line-clamp-2">
-            Whether you're curious about our services, cancellation policies, or travel packages, our FAQ section has got you covered. Find quick and reliable answers to make your plan.
+            Whether you&apos;re curious about our services, cancellation policies, or travel packages, our FAQ section has got you covered. Find quick and reliable answers to make your plan.
           </p>
-        </div>
+        </motion.div>
       </section>
 
       {/* 6. CTA */}

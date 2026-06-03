@@ -1,7 +1,10 @@
+"use client";
+
 import HomeHero from "@/components/HomeHero";
 import BlogCard from "@/components/BlogCard";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import { motion } from "framer-motion";
 
 const dummyBlogs = [
   {
@@ -59,17 +62,23 @@ export default function BlogPage() {
         showStats={false}
       />
 
-      <section className="py-20 max-w-7xl mx-auto px-4">
+      <motion.section 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="py-20 max-w-7xl mx-auto px-4"
+      >
         <h2 className="text-2xl md:text-3xl font-extrabold text-black text-center mb-16 leading-tight">
           Browse Through Our<br />Recent Articles and News
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {dummyBlogs.map((blog) => (
-            <BlogCard key={blog.id} {...blog} />
+          {dummyBlogs.map((blog, index) => (
+            <BlogCard key={blog.id} {...blog} index={index} />
           ))}
         </div>
-      </section>
+      </motion.section>
 
       <CTASection />
       <Footer />

@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const tours = [
   {
@@ -76,17 +77,27 @@ export default function BookDestinationPage() {
       <div className="flex-grow max-w-7xl mx-auto px-4 w-full pt-20 pb-24">
         
         {/* Header section */}
-        <div className="text-center mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
           <h1 className="text-2xl font-bold text-black mb-4">
             Book a Destination
           </h1>
           <p className="text-sm text-gray-600">
             Complete your booking in a few simple steps
           </p>
-        </div>
+        </motion.div>
 
         {/* Progress Bar */}
-        <div className="max-w-3xl mx-auto mb-24 relative z-0">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="max-w-3xl mx-auto mb-24 relative z-0"
+        >
           {/* Base Connecting Line */}
           <div className="absolute top-1/2 -left-8 md:-left-16 -right-8 md:-right-16 h-[1px] bg-[#d4d4d4] -z-10 transform -translate-y-1/2"></div>
           {/* Active Brown Line Segment */}
@@ -100,44 +111,64 @@ export default function BookDestinationPage() {
           
           <div className="flex justify-between items-center z-10">
             {/* Step 1: Location (Active) */}
-            <div className="w-12 h-12 rounded-full bg-majestic-gold flex items-center justify-center shadow-md">
+            <div 
+              onClick={() => setStep(1)}
+              className="w-12 h-12 rounded-full bg-majestic-gold flex items-center justify-center shadow-md cursor-pointer hover:scale-105 transition-transform"
+            >
               <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
               </svg>
             </div>
             {/* Step 2: Calendar */}
-            <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-300 ${step >= 2 ? 'bg-majestic-gold shadow-md text-white' : 'bg-[#efefef] text-black'}`}>
+            <div 
+              onClick={() => selectedTourId && setStep(2)}
+              className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${selectedTourId ? 'cursor-pointer hover:scale-105' : 'cursor-not-allowed'} ${step >= 2 ? 'bg-majestic-gold shadow-md text-white' : 'bg-[#efefef] text-black'}`}
+            >
               <svg className={`w-5 h-5 ${step >= 2 ? 'text-white' : 'text-black'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
             </div>
             {/* Step 3: People */}
-            <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-300 ${step >= 3 ? 'bg-majestic-gold shadow-md text-white' : 'bg-[#efefef] text-black'}`}>
+            <div 
+              onClick={() => selectedTourId && setStep(3)}
+              className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${selectedTourId ? 'cursor-pointer hover:scale-105' : 'cursor-not-allowed'} ${step >= 3 ? 'bg-majestic-gold shadow-md text-white' : 'bg-[#efefef] text-black'}`}
+            >
               <svg className={`w-5 h-5 ${step >= 3 ? 'text-white' : 'text-black'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
               </svg>
             </div>
             {/* Step 4: User Profile */}
-            <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-300 ${step >= 4 ? 'bg-majestic-gold shadow-md text-white' : 'bg-[#efefef] text-black'}`}>
+            <div 
+              onClick={() => selectedTourId && setStep(4)}
+              className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${selectedTourId ? 'cursor-pointer hover:scale-105' : 'cursor-not-allowed'} ${step >= 4 ? 'bg-majestic-gold shadow-md text-white' : 'bg-[#efefef] text-black'}`}
+            >
               <svg className={`w-5 h-5 ${step >= 4 ? 'text-white' : 'text-black'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
             </div>
             {/* Step 5: Payment */}
-            <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-300 ${step >= 5 ? 'bg-majestic-gold shadow-md text-white' : 'bg-[#efefef] text-black'}`}>
+            <div 
+              onClick={() => selectedTourId && setStep(5)}
+              className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${selectedTourId ? 'cursor-pointer hover:scale-105' : 'cursor-not-allowed'} ${step >= 5 ? 'bg-majestic-gold shadow-md text-white' : 'bg-[#efefef] text-black'}`}
+            >
               <svg className={`w-5 h-5 ${step >= 5 ? 'text-white' : 'text-black'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
               </svg>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {!isConfirmed ? (
           <>
             {step === 1 && (
           <>
             {/* Select a tour section */}
-            <div className="mb-12">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="mb-12"
+            >
               <div className="relative flex justify-center items-center mb-10">
                 <h2 className="text-2xl font-bold text-black text-center">Select a tour</h2>
                 <div className="absolute right-0">
@@ -186,7 +217,7 @@ export default function BookDestinationPage() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Continue Button */}
             <div className="flex justify-center w-full mt-16">

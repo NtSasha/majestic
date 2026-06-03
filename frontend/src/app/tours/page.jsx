@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import TourCard from "@/components/TourCard";
 import CTASection from "@/components/CTASection";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const heroImages = [
   "/images/image1.png",
@@ -108,15 +109,26 @@ export default function ToursPage() {
           <Navbar />
         </div>
 
-        <div className="relative z-30 flex flex-col items-center text-center px-4 max-w-4xl mx-auto mt-32">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="relative z-30 flex flex-col items-center text-center px-4 max-w-4xl mx-auto mt-32"
+        >
           <h1 className="text-xl md:text-3xl font-bold leading-relaxed mb-8">
             Experience the Best of Rwanda through <br className="hidden md:block" /> Unforgettable Journeys
           </h1>
-        </div>
+        </motion.div>
       </div>
 
       {/* Your Perfect Getaway */}
-      <section className="py-16 px-4 max-w-5xl mx-auto text-center">
+      <motion.section 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="py-16 px-4 max-w-5xl mx-auto text-center"
+      >
         <h2 className="text-2xl md:text-3xl font-bold text-black mb-4">Your perfect getaway</h2>
         <p className="text-gray-800 text-[13px] md:text-sm mb-10 w-full max-w-4xl mx-auto leading-relaxed">
           Whether you crave sandy beaches, majestic mountains, bustling cities, or serene forests, we bring you the best<br className="hidden md:block" /> destinations from around the globe. Start your journey here and discover your dream getaway.
@@ -138,13 +150,13 @@ export default function ToursPage() {
             </button>
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* Tours Grid Section */}
       <section className="pb-20 px-4 max-w-7xl mx-auto w-full mt-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredTours.map((tour, index) => (
-            <TourCard key={index} tour={tour} />
+            <TourCard key={index} tour={tour} index={index} />
           ))}
         </div>
       </section>

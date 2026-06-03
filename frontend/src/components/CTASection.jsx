@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function CTASection() {
   return (
@@ -8,7 +9,13 @@ export default function CTASection() {
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-10">
         
         {/* Left Content */}
-        <div className="w-full lg:w-5/12 flex flex-col -translate-y-4 lg:-translate-y-8 lg:pl-20">
+        <motion.div 
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="w-full lg:w-5/12 flex flex-col -translate-y-4 lg:-translate-y-8 lg:pl-20"
+        >
           <h2 className="text-2xl md:text-3xl lg:text-[34px] font-bold text-black leading-tight mb-6">
             Find your perfect<br />destination experience
           </h2>
@@ -29,10 +36,16 @@ export default function CTASection() {
               </svg>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Images (Staggered Collage) */}
-        <div className="w-full lg:w-7/12 relative h-[400px] md:h-[500px] lg:h-[550px] flex items-center justify-center mt-10 lg:mt-0">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="w-full lg:w-7/12 relative h-[400px] md:h-[500px] lg:h-[550px] flex items-center justify-center mt-10 lg:mt-0"
+        >
           
           {/* Middle Image (Lake) - Raised & Layered Above */}
           <div className="absolute left-1/2 -translate-x-1/2 top-10 lg:top-16 w-[180px] md:w-[220px] lg:w-[260px] h-[200px] md:h-[240px] lg:h-[280px] rounded-xl overflow-hidden shadow-2xl z-30">
@@ -61,7 +74,7 @@ export default function CTASection() {
             />
           </div>
 
-        </div>
+        </motion.div>
       </div>
     </section>
   );

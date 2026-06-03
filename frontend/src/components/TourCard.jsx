@@ -1,8 +1,15 @@
 import Link from "next/link";
+import { motion } from "framer-motion";
 
-export default function TourCard({ tour }) {
+export default function TourCard({ tour, index = 0 }) {
   return (
-    <Link href={`/tours/${tour.id}`} className="group cursor-pointer block">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+    >
+      <Link href={`/tours/${tour.id}`} className="group cursor-pointer block">
       <div className="relative h-[300px] md:h-[350px] lg:h-[380px] rounded-xl overflow-hidden shadow-md mb-4 bg-black">
         <img
           src={tour.image}
@@ -30,6 +37,7 @@ export default function TourCard({ tour }) {
           </div>
         </div>
       </div>
-    </Link>
+      </Link>
+    </motion.div>
   );
 }

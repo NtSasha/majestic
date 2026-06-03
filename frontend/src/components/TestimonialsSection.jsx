@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const testimonials = [
   {
@@ -49,10 +50,15 @@ export default function TestimonialsSection() {
   return (
     <section className="pt-8 pb-24 overflow-hidden w-full bg-white relative">
       <div className="max-w-4xl mx-auto px-4 text-center mb-24">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight">
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-2xl md:text-3xl font-bold mb-4 tracking-tight"
+        >
           <span className="text-majestic-gold">900+</span> <span className="text-black">Share Experiences</span>
-        </h2>
-        <p className="text-gray-600 text-xs md:text-sm max-w-2xl mx-auto leading-relaxed">
+        </motion.h2>
+        <p className="text-gray-600 text-xs md:text-sm max-w-2xl mx-auto leading-relaxed mt-4">
           Join 9600 travelers sharing experiences! Discover exclusive travel packages for every adventure seeker. Our deals help you find the perfect getaway
         </p>
       </div>

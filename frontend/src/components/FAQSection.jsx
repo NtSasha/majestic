@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const faqs = [
   {
@@ -52,7 +53,13 @@ export default function FAQSection() {
 
       <div className="max-w-5xl mx-auto">
         {/* Header Section */}
-        <div className="flex flex-col items-center text-center mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="flex flex-col items-center text-center mb-16"
+        >
           <h2 className="text-2xl md:text-3xl font-bold text-black mb-4 relative">
             Frequently asked questions
           </h2>
@@ -60,13 +67,17 @@ export default function FAQSection() {
           <p className="text-gray-600 text-sm max-w-sm mx-auto">
             Here are some common questions about our services to help you understand better.
           </p>
-        </div>
+        </motion.div>
 
         {/* FAQs Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {faqs.map((faq) => (
-            <div 
+          {faqs.map((faq, index) => (
+            <motion.div 
               key={faq.id} 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-white rounded-[1.5rem] p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
               onClick={() => toggleFaq(faq.id)}
             >
@@ -87,7 +98,7 @@ export default function FAQSection() {
                   {faq.answer}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

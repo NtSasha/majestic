@@ -1,4 +1,7 @@
+"use client";
+
 import React from 'react';
+import { motion } from 'framer-motion';
 
 export default function BlogHero() {
   return (
@@ -15,14 +18,19 @@ export default function BlogHero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 mt-20">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="relative z-10 text-center px-4 mt-20"
+      >
         <p className="text-white text-sm md:text-base font-medium mb-4 tracking-wide">
           our latest Blogs
         </p>
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight">
           Travel Blogs & Insights
         </h1>
-      </div>
+      </motion.div>
     </section>
   );
 }

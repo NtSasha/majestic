@@ -1,8 +1,17 @@
-import Link from 'next/link';
+"use client";
 
-export default function BlogCard({ id, image, date, title, description }) {
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+
+export default function BlogCard({ id, image, date, title, description, index = 0 }) {
   return (
-    <div className="border border-gray-200 rounded-2xl p-3 flex flex-col bg-white">
+    <motion.div 
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="border border-gray-200 rounded-2xl p-3 flex flex-col bg-white"
+    >
       {/* Image Container with Badge */}
       <div className="relative rounded-xl overflow-hidden mb-4 h-48">
         <img
@@ -36,6 +45,6 @@ export default function BlogCard({ id, image, date, title, description }) {
           Read more
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 }

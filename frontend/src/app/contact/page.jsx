@@ -1,7 +1,10 @@
+"use client";
+
 import HomeHero from "@/components/HomeHero";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function ContactPage() {
   return (
@@ -26,7 +29,13 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
           
           {/* Left Side: Contact Info */}
-          <div className="flex flex-col pt-8 w-full">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="flex flex-col pt-8 w-full"
+          >
             {/* Avatars */}
             <div className="flex -space-x-3 mb-6">
               <img className="w-10 h-10 rounded-full border-2 border-white bg-gray-200 object-cover" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Team member" />
@@ -60,10 +69,16 @@ export default function ContactPage() {
                 majestic@gmail.com
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Side: Contact Form */}
-          <div className="lg:pr-8">
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="lg:pr-8"
+          >
             <div className="bg-white rounded-[2rem] p-8 md:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100">
               <form className="flex flex-col gap-6">
                 <div>
@@ -100,7 +115,7 @@ export default function ContactPage() {
                 </div>
               </form>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </section>

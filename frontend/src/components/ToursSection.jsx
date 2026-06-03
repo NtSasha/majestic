@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const tours = [
   {
@@ -35,9 +36,14 @@ export default function ToursSection() {
     <section className="pt-0 pb-16 px-4 max-w-7xl mx-auto w-full">
       {/* Header Area */}
       <div className="flex flex-col items-center justify-center w-full mb-8 -mt-8">
-        <h2 className="text-[1.3rem] md:text-[1.6rem] font-bold text-black leading-tight tracking-tight text-center">
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-[1.3rem] md:text-[1.6rem] font-bold text-black leading-tight tracking-tight text-center"
+        >
           Find your perfect destination experience
-        </h2>
+        </motion.h2>
       </div>
 
       {/* See All Tours Link */}
@@ -52,8 +58,15 @@ export default function ToursSection() {
 
       {/* Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {tours.map((tour) => (
-          <div key={tour.id} className="relative h-[380px] rounded-2xl overflow-hidden group cursor-pointer shadow-md bg-black">
+        {tours.map((tour, index) => (
+          <motion.div 
+            key={tour.id}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.15 }}
+            className="relative h-[380px] rounded-2xl overflow-hidden group cursor-pointer shadow-lg bg-black"
+          >
             {/* Background Image */}
             <img
               src={tour.image}
@@ -82,7 +95,7 @@ export default function ToursSection() {
                 </svg>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 

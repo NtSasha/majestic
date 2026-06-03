@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import Navbar from "./Navbar";
 
 const images = [
@@ -47,27 +48,47 @@ export default function HomeHero({
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-30 flex flex-col items-center text-center px-4 max-w-4xl mx-auto mt-16">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        className="relative z-30 flex flex-col items-center text-center px-4 max-w-4xl mx-auto mt-16"
+      >
         {subtitle && (
-          <p className="text-xs md:text-sm font-medium mb-4 tracking-wide">
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-xs md:text-sm font-medium mb-4 tracking-wide"
+          >
             {subtitle}
-          </p>
+          </motion.p>
         )}
-        <h1 className="text-2xl md:text-4xl font-bold leading-tight mb-8">
+        <motion.h1 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-2xl md:text-4xl font-bold leading-tight mb-8"
+        >
           {title}
-        </h1>
+        </motion.h1>
         
         {showButton && (
-          <button className="flex items-center gap-2 bg-white text-majestic-gold px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition-colors shadow-lg mt-8">
+          <motion.button 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+            className="flex items-center gap-2 bg-white text-majestic-gold px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition-colors shadow-lg mt-8 group"
+          >
             Explore tours
-            <span className="flex items-center justify-center w-6 h-6 rounded-full bg-majestic-gold text-white">
+            <span className="flex items-center justify-center w-6 h-6 rounded-full bg-majestic-gold text-white group-hover:scale-110 transition-transform">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                 <path d="m9 18 6-6-6-6"/>
               </svg>
             </span>
-          </button>
+          </motion.button>
         )}
-      </div>
+      </motion.div>
 
       {/* Bottom Stats Bar */}
       {showStats && (

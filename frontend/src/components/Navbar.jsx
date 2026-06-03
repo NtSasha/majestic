@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -10,6 +11,16 @@ export default function Navbar({ theme = "dark" }) {
   const textColor = isLight ? "text-black" : "text-white";
   const borderColor = isLight ? "border-black" : "border-white";
   const hoverBg = isLight ? "hover:bg-black hover:text-white" : "hover:bg-white hover:text-black";
+
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const getLinkClass = (path) => {
     // Check if the current pathname is exact match for home, 
@@ -24,7 +35,8 @@ export default function Navbar({ theme = "dark" }) {
   };
 
   return (
-    <nav className={`absolute top-0 left-0 right-0 z-50 flex items-center justify-between px-10 py-6 w-full max-w-[1440px] mx-auto`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'glass-nav py-4' : 'bg-transparent py-6'}`}>
+      <div className="max-w-[1440px] mx-auto flex items-center justify-between px-10 w-full">
       {/* Logo */}
       <Link href="/" className={`flex items-center text-3xl font-bold tracking-wide ${textColor}`}>
         Maje
@@ -81,6 +93,7 @@ export default function Navbar({ theme = "dark" }) {
           <line x1="3" y1="18" x2="21" y2="18"></line>
         </svg>
       </button>
+      </div>
     </nav>
   );
 }
